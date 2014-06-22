@@ -3,7 +3,7 @@ development:
   secret_token: "secret"
 test:
   server: "http://localhost:9292/faye"
-  secret_token: "secret"
+  secret_token: "testsecret"
 production:
   server: "http://private-pub-summoner.herokuapp.com/faye"
   secret_token: "1b8299fda7917ab62f4fff0cadc363e346e287856b3c4186b5a47554af03f054"
