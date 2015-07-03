@@ -19,6 +19,7 @@ FayeTracking.configure do |config|
   config.logger = Logger.new('log/faye_tracking.log')
 end
 
+DEFAULT_REDIS_URL = "redis://127.0.0.1:63792"
 engine_opts = {
   type: Faye::Redis,
   uri: redis_uri,
