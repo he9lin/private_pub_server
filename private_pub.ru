@@ -13,9 +13,10 @@ PrivatePub.load_config(File.expand_path("../config/private_pub.yml", __FILE__),
   ENV["RAILS_ENV"] || "development")
 
 redis_uri = ENV['REDISTOGO_URL'] || 'redis://localhost:6379'
+redis_ns  = ENV['REDIS_NS'] || 'faye_tracking'
 
 FayeTracking.configure do |config|
-  config.redis = Redis::Namespace.new(:yell_faye_tracking, redis: Redis.new(url: redis_uri))
+  config.redis = Redis::Namespace.new(redis_ns, redis: Redis.new(url: redis_uri))
   config.logger = Logger.new('log/faye_tracking.log')
 end
 
