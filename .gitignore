@@ -1,2 +1,3 @@
 *.log
 .env
+config/private_pub.yml

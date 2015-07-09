@@ -1,5 +1,5 @@
 development:
-  server: "http://lidamofaye.ngrok.com/faye"
+  server: "http://localhost:9292/faye"
   secret_token: "1b8299fda7917ab62f4fff0cadc363e346e287856b3c4186b5a47554af03f054"
 test:
   server: "http://localhost:9292/faye"
