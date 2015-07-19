@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'private_pub', git: 'https://github.com/he9lin/private_pub.git', ref: '968b120e1ea1'
+gem 'private_pub', git: 'https://github.com/he9lin/private_pub.git', ref: '67807876b24'
 gem 'thin'
 gem 'faye-redis'
 gem 'redis-namespace'
