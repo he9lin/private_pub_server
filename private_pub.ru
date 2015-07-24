@@ -7,7 +7,7 @@ require "redis"
 require "private_pub"
 require "faye_tracking"
 
-redis_uri = ENV['REDISTOGO_URL'] || 'redis://localhost:6379'
+redis_uri = ENV['REDIS_URL'] || 'redis://localhost:6379'
 redis_ns  = ENV['REDIS_NS'] || 'faye_tracking'
 run_env   = ENV['SERVER_ENV'] || "development"
 logger    = Logger.new('log/faye_tracking.log')
