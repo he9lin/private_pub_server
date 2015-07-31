@@ -1,5 +1,9 @@
 # PrivatePub Server
 
-## TODO
+This is a WIP library.
 
-* Add ENV variable setup for private_pub.yml
+## Main features
+
+* Authenticated messaging (PrivatePub)
+* Online presence (FayeTracking)
+
