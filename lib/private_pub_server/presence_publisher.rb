@@ -12,20 +12,24 @@ module PrivatePubServer
       end
 
       def async_publish_presence(*args)
-        PrivatePubServer.logger.debug "enqueue job #{args}"
+        logger.debug "enqueue job #{args}"
         Resque.enqueue(PresencePublisherJob, :publish_presence, *args)
       end
 
       def async_publish_absence(*args)
-        PrivatePubServer.logger.debug "enqueue job #{args}"
+        logger.debug "enqueue job #{args}"
         Resque.enqueue(PresencePublisherJob, :publish_absence, *args)
       end
 
       private
 
       def publish_to(*args)
-        PrivatePubServer.logger.info "presence publishing: #{args}"
+        logger.info "presence publishing: #{args}"
         PrivatePub.publish_to(*args)
+      end
+
+      def logger
+        PrivatePubServer.logger
       end
     end
   end
