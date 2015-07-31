@@ -6,6 +6,7 @@ require "faye/redis"
 require "redis"
 require "private_pub"
 require "faye_tracking"
+require 'erb'
 
 redis_uri = ENV['REDIS_URL'] || 'redis://localhost:6379'
 redis_ns  = ENV['REDIS_NS'] || 'faye_tracking'

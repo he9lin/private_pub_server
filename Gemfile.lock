@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/he9lin/private_pub.git
-  revision: 968b120e1ea1144d82feee341648c4b25d3214de
-  ref: 968b120e1ea1
+  revision: 67807876b2438c6b6a2e9687c00fada6850463a5
+  ref: 67807876b24
   specs:
     private_pub (1.0.3)
       faye
