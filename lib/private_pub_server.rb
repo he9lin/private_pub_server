@@ -1,20 +1,29 @@
+require "yaml"
+require 'erb'
+require "faye"
+require "faye/redis"
+require "redis"
+require "private_pub"
+require 'resque'
+require "faye_tracking"
+
 module PrivatePubServer
-  PRESENCE_CHANNEL = 'presence'
+  def self.load_config(config, env)
+    PrivatePub.load_config(config, env)
+  end
 
-  class << self
-    def publish_presence(channel:, user_id:, client_id:)
-      publish_to PRESENCE_CHANNEL, event: 'join', channel: channel, user_id: user_id, client_id: client_id
-    end
+  def self.logger
+    FayeTracking.logger
+  end
 
-    def publish_absence(channel:, user_id:, client_id:)
-      publish_to PRESENCE_CHANNEL, event: 'leave', channel: channel, user_id: user_id, client_id: client_id
-    end
+  def self.publish_presence(*args)
+    PresencePublisher.async_publish_presence(*args)
+  end
 
-    private
-
-    def publish_to(*args)
-      FayeTracking.logger.info "presence publishing: #{args}"
-      PrivatePub.publish_to(*args)
-    end
+  def self.publish_absence(*args)
+    PresencePublisher.async_publish_absence(*args)
   end
 end
+
+require_relative 'private_pub_server/presence_publisher'
+require_relative 'private_pub_server/presence_publisher_job'

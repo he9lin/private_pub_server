@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/he9lin/faye_tracking.git
+  revision: d273e6bd538a40459e80a22035aabdb855a16fac
+  ref: d273e6bd538
+  specs:
+    faye_tracking (0.2.4)
+      redis (~> 3.0)
+
+GIT
   remote: https://github.com/he9lin/private_pub.git
   revision: 67807876b2438c6b6a2e9687c00fada6850463a5
   ref: 67807876b24
@@ -38,18 +46,33 @@ GEM
     faye-websocket (0.9.2)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
-    faye_tracking (0.2.4)
-      redis (~> 3.0)
     hiredis (0.4.5)
     http_parser.rb (0.6.0)
+    mono_logger (1.1.0)
     multi_json (1.10.1)
     rack (1.5.2)
+    rack-protection (1.5.3)
+      rack
+    rake (10.4.2)
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    resque (1.25.2)
+      mono_logger (~> 1.0)
+      multi_json (~> 1.0)
+      redis-namespace (~> 1.3)
+      sinatra (>= 0.9.2)
+      vegas (~> 0.1.2)
+    sinatra (1.4.6)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (>= 1.3, < 3)
     thin (1.6.2)
       daemons (>= 1.0.9)
       eventmachine (>= 1.0.0)
+      rack (>= 1.0.0)
+    tilt (1.4.1)
+    vegas (0.1.11)
       rack (>= 1.0.0)
     websocket-driver (0.5.4)
       websocket-extensions (>= 0.1.0)
@@ -61,7 +84,9 @@ PLATFORMS
 DEPENDENCIES
   faye (= 1.1.1)
   faye-redis
-  faye_tracking (= 0.2.4)
+  faye_tracking!
   private_pub!
+  rake
   redis-namespace
+  resque
   thin
