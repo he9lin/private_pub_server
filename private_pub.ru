@@ -37,8 +37,15 @@ bayeux.on(:unsubscribe) do |client_id, channel|
   FayeTracking.tracker.remove(channel, client_id)
   logger.debug "removed client_id: #{client_id} from channel: #{channel}"
 
+  # takes care of cases when multiple client_ids for same user_id on same channel
+  user_still_in_channel = FayeTracking.user_in_channel?(user_id, channel)
+
   if user_id
-    PrivatePubServer.publish_absence(channel, user_id, client_id)
+    if user_still_in_channel
+      logger.debug "user #{user_id} still in channel #{channel}" if user_still_in_channel
+    else
+      PrivatePubServer.publish_absence(channel, user_id, client_id)
+    end
   else
     logger.error "no matching user for client_id #{client_id}"
   end
