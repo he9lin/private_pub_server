@@ -2,11 +2,9 @@ module PrivatePubServer
   class PresencePublisherJob
     @queue = :presence_publish
 
-    def self.perform(presence_or_absence, channel, user_id, client_id)
+    def self.perform(presence_or_absence, opts)
       PrivatePubServer.logger.debug "perform presence publisher job"
-      PresencePublisher.public_send(presence_or_absence,
-        channel, user_id, client_id
-      )
+      PresencePublisher.public_send(presence_or_absence, opts.symbolize_keys)
     end
   end
 end

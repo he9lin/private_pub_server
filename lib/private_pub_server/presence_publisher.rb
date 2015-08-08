@@ -1,14 +1,20 @@
 module PrivatePubServer
   module PresencePublisher
-    PRESENCE_CHANNEL = 'presence'
-
     class << self
-      def publish_presence(channel, user_id, client_id)
-        publish_to PRESENCE_CHANNEL, event: 'join', channel: channel, user_id: user_id, client_id: client_id
+      def publish_presence(channel:, user_id:, client_id:, users:)
+        publish_to channel,
+          event: 'join',
+          user_id: user_id,
+          client_id: client_id,
+          users: users
       end
 
-      def publish_absence(channel, user_id, client_id)
-        publish_to PRESENCE_CHANNEL, event: 'leave', channel: channel, user_id: user_id, client_id: client_id
+      def publish_absence(channel:, user_id:, client_id:, users:)
+        publish_to channel,
+          event: 'leave',
+          user_id: user_id,
+          client_id: client_id,
+          users: users
       end
 
       def async_publish_presence(*args)
@@ -24,7 +30,7 @@ module PrivatePubServer
       private
 
       def publish_to(*args)
-        logger.info "presence publishing: #{args}"
+        logger.debug "presence publishing: #{args}"
         PrivatePub.publish_to(*args)
       end
 
