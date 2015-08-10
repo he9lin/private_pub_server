@@ -5,8 +5,8 @@ require "faye"
 require "faye/redis"
 require "redis"
 require "private_pub"
-require 'resque'
 require "faye_tracking"
+require 'sucker_punch'
 
 module PrivatePubServer
   class << self

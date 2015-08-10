@@ -19,12 +19,12 @@ module PrivatePubServer
 
       def async_publish_presence(*args)
         logger.debug "enqueue job #{args}"
-        Resque.enqueue(PresencePublisherJob, :publish_presence, *args)
+        PresencePublisherJob.new.async.perform(:publish_presence, *args)
       end
 
       def async_publish_absence(*args)
         logger.debug "enqueue job #{args}"
-        Resque.enqueue(PresencePublisherJob, :publish_absence, *args)
+        PresencePublisherJob.new.async.perform(:publish_absence, *args)
       end
 
       private

@@ -6,10 +6,9 @@ gem 'faye-redis'
 gem 'redis-namespace'
 gem 'faye', '1.1.1'
 gem 'faye_tracking', '0.2.5'
-gem 'resque'
 gem 'rake'
+gem 'sucker_punch', '~> 1.0'
 
 group :test do
   gem 'rspec', '~> 3.3.0'
-  gem 'resque_spec'
 end

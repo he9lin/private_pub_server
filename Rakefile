@@ -1,5 +1,3 @@
-require 'resque/tasks'
-
 task :environment do
   require_relative 'lib/private_pub_server'
 
@@ -15,8 +13,6 @@ task :environment do
     redis_ns:                redis_ns
   )
 end
-
-task "resque:setup" => :environment
 
 task :reset_store => :environment do
   FayeTracking.reset_store

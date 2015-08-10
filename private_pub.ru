@@ -8,6 +8,8 @@ redis_ns    = ENV['REDIS_NS']   || 'faye_tracking'
 config_file = File.expand_path("../config/private_pub.yml", __FILE__)
 logger      = Logger.new('log/faye_tracking.log')
 
+SuckerPunch.logger = Logger.new('log/sucker_punch.log')
+
 # Configurations
 PrivatePubServer.configure(
   private_pub_config_file: config_file,
