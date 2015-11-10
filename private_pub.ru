@@ -10,6 +10,7 @@ require "erb"
 redis_uri = ENV['REDIS_URL'] || 'redis://localhost:6379'
 redis_ns  = ENV['REDIS_NS'] || 'private_pub'
 run_env   = ENV['SERVER_ENV'] || "development"
+logger    = Logger.new(STDOUT)
 
 Faye::WebSocket.load_adapter('thin')
 
