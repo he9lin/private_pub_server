@@ -4,7 +4,7 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-set :app_host, ENV['CAPISTRANO_DEPLOY_APP_HOST_PROD']
+set :app_host, '107.170.236.134'
 
 role :app, "deployer@#{fetch(:app_host)}"
 role :web, "deployer@#{fetch(:app_host)}"

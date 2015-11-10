@@ -2,7 +2,7 @@ lock '3.3.5'
 
 set :application, 'private_pub_server'
 set :repo_url,    'https://github.com/he9lin/private_pub_server.git'
-set :branch,      ENV['CAPISTRANO_DEPLOY_BRANCH'] || 'master'
+set :branch,      'v1'
 
 set :deploy_to,   '/home/deployer/apps/main_app'
 set :deploy_via,  :remote_cache
