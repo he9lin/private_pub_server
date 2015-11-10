@@ -1,0 +1,6 @@
+SERVER_ENV=development
+PORT=9292
+REDIS_NS=lidamo_faye_tracking
+# FAYE_SERVER=http://lidamofaye.ngrok.com/faye
+FAYE_SERVER=http://127.0.0.1:9292/faye
+FAYE_TOKEN=1b8299fda7917ab62f4fff0cadc363e346e287856b3c4186b5a47554af03f054
