@@ -1,0 +1,9 @@
+development:
+  server: <%= ENV['FAYE_SERVER'] %>
+  secret_token: <%= ENV['FAYE_TOKEN'] %>
+test:
+  server: "http://localhost:9292/faye"
+  secret_token: "testsecret"
+production:
+  server: <%= ENV['FAYE_SERVER'] %>
+  secret_token: <%= ENV['FAYE_TOKEN'] %>
