@@ -2,13 +2,13 @@
 require "bundler/setup"
 require_relative 'lib/private_pub_server'
 
-run_env     = ENV['SERVER_ENV'] || "development"
+run_env     = ENV['RACK_ENV'] || "development"
 redis_uri   = ENV['REDIS_URL']  || 'redis://localhost:6379'
 redis_ns    = ENV['REDIS_NS']   || 'faye_tracking'
 config_file = File.expand_path("../config/private_pub.yml", __FILE__)
-logger      = Logger.new('log/faye_tracking.log')
+logger      = Logger.new(STDOUT)
 
-SuckerPunch.logger = Logger.new('log/sucker_punch.log')
+SuckerPunch.logger = Logger.new(STDOUT)
 
 # Configurations
 PrivatePubServer.configure(

@@ -1,6 +1,4 @@
 *.log
 .env
-config/private_pub.yml
-Procfile
 .capistrano/
 .rbenv-vars
