@@ -8,8 +8,8 @@ require "private_pub"
 require "erb"
 require "logger"
 
-redis_uri = ENV['REDIS_URL'] || 'redis://localhost:6379'
-redis_ns  = ENV['REDIS_NS'] || 'private_pub'
+redis_uri = ENV['REDIS_URL']  || 'redis://localhost:6379'
+redis_ns  = ENV['REDIS_NS']   || 'private_pub'
 run_env   = ENV['SERVER_ENV'] || "development"
 logger    = Logger.new(STDOUT)
 
@@ -18,9 +18,9 @@ Faye::WebSocket.load_adapter('thin')
 PrivatePub.load_config(File.expand_path("../config/private_pub.yml", __FILE__), run_env)
 
 engine_opts = {
-  type: Faye::Redis,
-  uri: redis_uri,
-  namespace: 'private_pub'
+  type:      Faye::Redis,
+  uri:       redis_uri,
+  namespace: redis_ns
 }
 
 extensions = [PrivatePub::FayeExtension.new]
