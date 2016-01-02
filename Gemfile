@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.1.2"
 
 gem 'private_pub', git: 'https://github.com/he9lin/private_pub.git', ref: '67807876b24'
 gem 'thin'
