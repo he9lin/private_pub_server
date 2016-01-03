@@ -1,6 +1,0 @@
-port: 5000
-ssl: true
-ssl_key_file: /home/dokku/tls/server.key
-ssl_cert_file: /home/dokku/tls/server.crt
-environment: production
-rackup: private_pub.ru
