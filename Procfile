@@ -1,1 +1,1 @@
-web: bundle exec thin start -e production -p $PORT --ssl
+web: bundle exec thin -C config/private_pub_thin.yml start
