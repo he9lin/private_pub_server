@@ -1,25 +1,27 @@
 # Run with: rackup private_pub.ru -s thin -E production
 require "bundler/setup"
-require_relative 'lib/private_pub_server'
+require "yaml"
+require "logger"
+require "faye"
+require "faye/redis"
+require "private_pub"
 
-run_env     = ENV['RACK_ENV'] || "development"
-redis_uri   = ENV['REDIS_URL']  || 'redis://localhost:6379'
-redis_ns    = ENV['REDIS_NS']   || 'faye_tracking'
-config_file = File.expand_path("../config/private_pub.yml", __FILE__)
-logger      = Logger.new(STDOUT)
+redis_url = ENV["REDIS_URL"] || "redis://127.0.0.1:6379/0"
+redis_ns  = ENV["REDIS_NS"]  || "private_pub"
+rack_env  = ENV["RACK_ENV"]  || "development"
+logger    = Logger.new(STDOUT)
 
-SuckerPunch.logger = Logger.new(STDOUT)
+Faye::WebSocket.load_adapter('thin')
 
-# Configurations
-PrivatePubServer.configure(
-  private_pub_config_file: config_file,
-  run_env:                 run_env,
-  redis_uri:               redis_uri,
-  redis_ns:                redis_ns,
-  logger:                  logger
-)
+PrivatePub.load_config(File.expand_path("../config/private_pub.yml", __FILE__),
+                       rack_env)
 
-# Server setup
-app = PrivatePubServer.app
-logger.info "running private_pub in #{run_env} with config: #{PrivatePub.config}"
-run app
+engine_opts = {
+	type: Faye::Redis,
+	uri: redis_url,
+	namespace: redis_ns
+}
+
+logger.info "Running with #{engine_opts}"
+
+run PrivatePub.faye_app(engine: engine_opts)

@@ -2,8 +2,8 @@
 
 This is a WIP library.
 
-## Main features
-
-* Authenticated messaging (PrivatePub)
-* Online presence (FayeTracking)
-
+```
+git push dokku master
+# or
+git push dokku [branch]:master
+```
