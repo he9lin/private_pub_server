@@ -1,4 +1,3 @@
-# Run with: rackup private_pub.ru -s thin -E production
 require "bundler/setup"
 require "yaml"
 require "logger"
@@ -10,8 +9,6 @@ redis_url = ENV["REDIS_URL"] || "redis://127.0.0.1:6379/0"
 redis_ns  = ENV["REDIS_NS"]  || "private_pub"
 rack_env  = ENV["RACK_ENV"]  || "development"
 logger    = Logger.new(STDOUT)
-
-Faye::WebSocket.load_adapter('thin')
 
 PrivatePub.load_config(File.expand_path("../config/private_pub.yml", __FILE__),
                        rack_env)
